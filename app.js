@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const passport = require('passport');
+const { hostname } = require('os');
 
 /**
  * -------------- GENERAL SETUP ----------------
@@ -50,4 +51,7 @@ app.use(require('./routes'));
  */
 
 // Server listens on http://localhost:3000
-app.listen(3000);
+app.listen(3000,'localhost',()=>{
+    console.log(`Server listening on http://${hostname}:${port}`);
+     });
+
