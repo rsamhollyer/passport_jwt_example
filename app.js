@@ -12,7 +12,7 @@ const { hostname } = require('os');
 require('dotenv').config();
 
 // Create the Express application
-var app = express();
+const app = express();
 
 // Configures the database and opens a global connection that can be used in any module with `mongoose.connection`
 require('./config/database');
@@ -28,7 +28,7 @@ app.use(passport.initialize());
 
 // Instead of using body-parser middleware, use the new Express implementation of the same thing
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Allows our Angular application to make HTTP requests to Express application
 app.use(cors());
@@ -45,13 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Imports all of the routes from ./routes/index.js
 app.use(require('./routes'));
 
-
 /**
  * -------------- SERVER ----------------
  */
 
 // Server listens on http://localhost:3000
-app.listen(3000,'localhost',()=>{
-    console.log(`Server listening on http://${hostname}:${port}`);
-     });
-
+app.listen(3000, 'localhost', () => {
+  console.log(`Server listening on http://localhost:3000`);
+});
